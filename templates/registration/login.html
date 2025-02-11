@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}LogIn{% endblock title %}
 
@@ -8,8 +9,8 @@
 
 <form action="" method="post">
     {% csrf_token %}
-    {{form}}
-    <input type="submit" value="LogIn">
+    {{form|crispy}}
+    <input class="btn btn-success ms-2" type="submit" value="LogIn">
 </form>
 <p>Don't have an account?<a href="{% url 'signup' %}">
     Click here to signup.</a></p>
