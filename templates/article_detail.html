@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="article_entry">
@@ -6,6 +7,16 @@
     <p>by {{article.author}} | {{article.date}}</p>
     <p>{{article.body}}</p>
 </div>
+
+{% if article.comment_set.all %}
+    <hr>
+    <h4>Comments</h4>
+    {% for comment in article.comment_set.all %}
+    <p>{{ comment.author }} &middot; {{ comment }}</p>
+    {% endfor %}
+    <hr>
+{% endif %}
+
 <div>
     {% if article.author.pk == request.user.pk %}
     <p>
@@ -13,6 +24,14 @@
         <a href="{% url 'article_delete' article.pk %}">Delete</a>
     </p>
     {% endif %}
-    <p>Back to <a href="{% url 'article_list' %}">All Articles</a></p>
+
+<h4>Add a comment</h4>
+<form action="" method="post">
+    {%csrf_token%}
+    {{form|crispy}}
+    <input type="submit" value="save" class="btn btn-success ms-2">
+</form>
+<br>
+<p>Back to <a href="{% url 'article_list' %}">All Articles</a></p>
 </div>
-{% endblock content %} 
+{% endblock content %}
