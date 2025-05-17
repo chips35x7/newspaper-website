@@ -5,16 +5,22 @@
 
 {% block content %}
 
-<h2>LogIn</h2>
+<div class="auth">
+    <div class="contents">
+        <h2 class="header">Login*</h2>
 
-<form action="" method="post">
-    {% csrf_token %}
-    {{form|crispy}}
-    <input class="btn btn-success ms-2" type="submit" value="LogIn">
-</form>
-<!-- <p>Don't have an account?<a href="{% url 'signup' %}">
-    Click here to signup.</a></p> -->
-<br>
-<p><a href="{% url 'password_reset' %}">Forgot your password?</a></p>
+        <form action="" method="post" class="auth-form">
+            {% csrf_token %}
+            {{form|crispy}}
+            <br>
+            <div class="d-grid">
+                <input class="btn btn-success w-100" type="submit" value="LogIn">
+            </div>
+        </form>
+        <!-- <p>Don't have an account?<a href="{% url 'signup' %}">
+            Click here to signup.</a></p> -->
+        <a href="{% url 'password_reset' %}" class="password-reset">Forgot your password?</a>
+    </div>
+</div>
 
 {% endblock content %}

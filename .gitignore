@@ -2,3 +2,4 @@
 __pycache__/
 general.py
 db.sqlite3
+.env

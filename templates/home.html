@@ -5,14 +5,9 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-<p>Hi {{user.username}}.<br>You are {{user.age}} years old.</p>
-<form action="{% url 'logout' %}" method="post">
-    {% csrf_token %}
-    <input type="submit" value="LogOut">
-</form> 
-<br>
-<p><a class="btn btn-primary" href="{% url 'article_list' %}" role="button">
-    View all articles</a></p>
+<h2>Hi {{user.username}}.</h2>
+<p>You are {{user.age}} years old.</p>
+<p><a class="btn btn-info" href="{% url 'article_list' %}">View all articles</a></p>
 {% else %}
 <p>You are not logged in!</p>
 <a href="{% url 'login' %}">LogIn</a> |

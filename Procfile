@@ -1,0 +1,1 @@
+web: gunicorn newspaper_website.wsgi --load-file -
