@@ -1,1 +1,1 @@
-web: gunicorn newspaper_website.wsgi --load-file -
+web: gunicorn newspaper_website.wsgi:application
